@@ -1,0 +1,140 @@
+\documentclass[a4paper,12pt]{article}
+
+\usepackage[slovene]{babel}
+\usepackage{amsfonts,amssymb,amsmath}
+\usepackage{amsthm}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{graphicx}
+
+
+\def\N{\mathbb{N}} % mnozica naravnih stevil
+\def\Z{\mathbb{Z}} % mnozica celih stevil
+\def\Q{\mathbb{Q}} % mnozica racionalnih stevil
+\def\R{\mathbb{R}} % mnozica realnih stevil
+\def\C{\mathbb{C}} % mnozica kompleksnih stevil
+
+
+\newcommand{\cay}[2]{$Cay(#1, #2)$}
+\newcommand{\aut}[2]{Aut(#1, #2)}
+\newcommand{\cit}[1]{(Izrek \ref{#1})}
+
+\def\qed{$\hfill\Box$}   % konec dokaza
+\def\qedm{\qquad\Box}   % konec dokaza v matematičnem načinu
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{posledica}{Posledica}
+\newtheorem{lema}{Lema}
+\newtheorem{opomba}{Opomba}
+\newtheorem{definicija}{Definicija}
+\newtheorem{zgled}{Zgled}
+
+\title{Proste grupe in drevesa \\ 
+\Large Seminar}
+\author{Jakob Pogačnik Souvent \\
+Fakulteta za matematiko in fiziko \\
+Oddelek za matematiko}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\maketitle
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Uvod}
+Lorem
+\section{Proste grupe}
+
+\begin{definicija}[Prosta grupa]
+    Naj bo $S$ podmnožica grupe $F$. Pravimo, da $S$ \textbf{prosto generira} $F$, če je $F$ generirana z $S$ in velja:
+
+    Za vsako grupo $G$ in vsako preslikavo $\varphi : S \longrightarrow G$ obstaja enolično določen homomorfizem $\overline{\varphi} : F \longrightarrow G$ ki razširi $\varphi$.
+
+    Grupi $F$ pravimo \textbf{prosta}, če vsebuje kakšno podmnožico, ki jo prosto generira, zgornji lastnosti pa pravimo \textbf{univerzalna lastnost} prostih grup.
+\end{definicija}
+
+TODO: Formalna definicija proste grupe nad množico in definicija z reduced words
+
+\section{Cayleyjevi grafi}
+
+\begin{definicija}
+    \textbf{Graf} TODO
+\end{definicija}
+
+\begin{definicija}[Cayleyev graf]
+    Naj bo $S$ podmnožica, ki generira grupo $G$. \textbf{Cayleyjev graf} $G$ glede na generator $S$ je graf \cay{G}{S} katerega množica vozlišč je množica $G$
+    in katerega množica robov je množica
+    $$
+    \{\{g, g \cdot s\} | g \in G, s \in (S \cup S^{-1}) \setminus \{e\} \}.
+    $$
+\end{definicija}
+
+Dve vozlišči v Cayleyjevem grafu sta si torej sosednji natanko tedaj, ko se razlikujeta le za desno množenje z elementom (ali inverzom) dane množice $S$, ki generira $G$.
+
+\begin{izrek}
+    \label{izr:freeCayleyTree}
+    Naj bo $F$ grupa, prosto generirana z $S \subset F$. Potem je graf \cay{F}{S} drevo.
+\end{izrek}
+
+\begin{opomba}
+    Inverz v splošnem ne drži. t.j. ni res da za vsak \cay{F}{S} sledi, da je $F$ prosto generirana z $S$. TODO: protiprimer
+\end{opomba}
+
+TODO: Če dodamo še predpostavko da $s \cdot t \neq e \forall s, t \in S$ inverz drži.
+
+
+\section{Delovanje}
+
+\begin{definicija}[Prosto delovanje na množici]
+    Naj grupa $G$ deluje na množici $X$. Pravimo, da je delovanje \textbf{prosto}, če velja:
+    $$
+        g \cdot x \neq x
+    $$
+    za vsak $g \in G \setminus \{e\}$ in vsak $x \in X$.
+\end{definicija}
+
+\begin{definicija}[Prosto delovanje na grafu]
+    Naj grupa $G$ deluje na grafu $(V, E)$. Označimo delovanje kot preslikavo $\rho : G \longrightarrow \aut{V}{E}$. To delovanje je \textbf{prosto}, če za vsak $g \in G\setminus\{e\}$ velja:
+    \begin{align*}
+        \forall v \in V : (\rho(g))(v) &\neq v \text{, in}\\
+        \forall \{v, v'\} \in E : \{(\rho(g))(v), (\rho(g))(v')\} &\neq \{v, v'\}
+    \end{align*}
+
+\end{definicija}
+
+\begin{izrek}
+    Naj bo $G$ grupa in $S$ neka množica ki generira $G$. Potem je delovanje $G$ na \cay{G}{S} z levo translacijo
+    $$
+    g \cdot v = gv
+    $$
+    prosto natanko tedaj, ko $S$ ne vsebuje nobenega elementa reda $2$.
+\end{izrek}
+
+\begin{proof}
+    Ker velja $g \cdot g' = gg'$ po definiciji delovanja in $gg' = g' \Longleftrightarrow g = e$ zaradi dejstva da sta $g$ in $g'$ elementa grupe $G$
+    je delovanje $G$ na vozliščih \cay{G}{S} vedno prosto in ustreza prvemu delu definicija za prosto delovanje na grafu.
+\end{proof}
+
+\section{Delovanje prostih grup na drevesih}
+
+\begin{izrek}
+    Grupa je prosta natanko tedaj ko ima neko prosto delovanje na nepraznem drevesu.
+\end{izrek}
+
+\begin{proof}
+    Naj bo $F$ prosta grupa prosto generirana z $S \subset F$ po izreku \ref{izr:freeCayleyTree} je njen Cayleyev graf \cay{F}{S} drevo.
+    Oglejmo si delovanje $F$ na \cay{F}{S} z levo translacijo.
+    $$
+    f \cdot v = fv
+    $$
+\end{proof}
+    
+\section{Nielsen-Schreirerjev izrek}
+
+\end{document}
