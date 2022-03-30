@@ -69,10 +69,11 @@ TODO: Formalna definicija proste grupe nad množico in definicija z reduced word
 
 \begin{definicija}[Cayleyev graf]
     Naj bo $S$ podmnožica, ki generira grupo $G$. \textbf{Cayleyjev graf} $G$ glede na generator $S$ je graf \cay{G}{S} katerega množica vozlišč je množica $G$
-    in katerega množica robov je množica
+    in katerega množica povezav je množica
     $$
-    \{\{g, g \cdot s\} | g \in G, s \in (S \cup S^{-1}) \setminus \{e\} \}.
+    \{\{g, g \cdot s\} | g \in G, s \in (S \cup S^{-1}) \setminus \{e\} \},
     $$
+    kjer je s $\cdot$ označeno množenje v grupi $G$.
 \end{definicija}
 
 Dve vozlišči v Cayleyjevem grafu sta si torej sosednji natanko tedaj, ko se razlikujeta le za desno množenje z elementom (ali inverzom) dane množice $S$, ki generira $G$.
@@ -90,6 +91,10 @@ TODO: Če dodamo še predpostavko da $s \cdot t \neq e \forall s, t \in S$ inver
 
 
 \section{Delovanje}
+
+\begin{definicija}[Delovanje]
+TODO	
+\end{definicija}
 
 \begin{definicija}[Prosto delovanje na množici]
     Naj grupa $G$ deluje na množici $X$. Pravimo, da je delovanje \textbf{prosto}, če velja:
@@ -109,6 +114,7 @@ TODO: Če dodamo še predpostavko da $s \cdot t \neq e \forall s, t \in S$ inver
 \end{definicija}
 
 \begin{izrek}
+\label{izr:cayleyFreeOrder}
     Naj bo $G$ grupa in $S$ neka množica ki generira $G$. Potem je delovanje $G$ na \cay{G}{S} z levo translacijo
     $$
     g \cdot v = gv
@@ -117,8 +123,23 @@ TODO: Če dodamo še predpostavko da $s \cdot t \neq e \forall s, t \in S$ inver
 \end{izrek}
 
 \begin{proof}
-    Ker velja $g \cdot g' = gg'$ po definiciji delovanja in $gg' = g' \Longleftrightarrow g = e$ zaradi dejstva da sta $g$ in $g'$ elementa grupe $G$
-    je delovanje $G$ na vozliščih \cay{G}{S} vedno prosto in ustreza prvemu delu definicija za prosto delovanje na grafu.
+\label{dkz:prostoDelRed	}
+    Ker velja $g \cdot g' = gg'$ po definiciji delovanja in $gg' = g' \Longleftrightarrow g = e$ zaradi dejstva da sta $g$ in $g'$ elementa grupe $G$,
+    je delovanje $G$ na vozliščih \cay{G}{S} vedno prosto in ustreza prvemu delu definicija za prosto delovanje na grafu. Dovolj je torej, da dokažemo ekvivalentnost drugega dela definicije.
+    
+    Pokažimo, da v primeru, da delovanje ni prosto, \cay{G}{S} vsebuje element reda $2$. Naj bo $g \in G$ in naj bo $\{v, v'\}$ povezava v \cay{G}{S} za katerega velja $\{v, v'\} = g \cdot \{v, v'\} = \{g \cdot v, g \cdot v'\}$ (druga enakost je definicija delovanja). Iz enakosti množic ločimo dva primera:
+    \begin{enumerate}
+    \item Če $g \cdot v = v$ in $g \cdot v' = v'$ kar pa je res le v primeru da $g = \varepsilon$, ker je delovanje na vozliščih prosto.
+    \item Če $g \cdot v = v'$ in $g \cdot v' = v$ po definiciji sosednosti v \cay{G}{S} obstaja $s \in (S \cup S^{-1})\setminus \{\varepsilon\}$ da je $v' = vs$. Sledi:
+    $$
+	v = g \cdot v' = g \cdot (vs) = g(vs) = (gv)s = (g \cdot v)s = (v')s = (vs)s =vs^{2}    
+    $$
+    Če zdaj z desne množimo z $v^{-1}$ dobimo željeno enakost $e = s^{2}$. Torej je $s$ iskani element reda $2$.
+    \end{enumerate}
+    
+    Pokažimo še da iz tega, da v $S$ obstaja element reda $2$, sledi, da delovanje ni prosto. Naj bo $s \in S$ reda $2$. Pri delovanju $G$ na \cay{G}{S} velja 
+    $$s \cdot \{e, s\} = \{s \cdot e, s \cdot s\} = \{s, s^{2}\} = \{s, e\}$$
+ torej obstaja element grupe $G$ ki fiksira neko povezavo in po definiciji dano delovanje na grafu ni prosto.
 \end{proof}
 
 \section{Delovanje prostih grup na drevesih}
@@ -128,13 +149,13 @@ TODO: Če dodamo še predpostavko da $s \cdot t \neq e \forall s, t \in S$ inver
 \end{izrek}
 
 \begin{proof}
-    Naj bo $F$ prosta grupa prosto generirana z $S \subset F$ po izreku \ref{izr:freeCayleyTree} je njen Cayleyev graf \cay{F}{S} drevo.
-    Oglejmo si delovanje $F$ na \cay{F}{S} z levo translacijo.
-    $$
-    f \cdot v = fv
-    $$
+    Naj bo $F$ prosta grupa prosto generirana z $S \subset F$ po izreku \ref{izr:freeCayleyTree} je njen Cayleyev graf \cay{F}{S} (neprazno) drevo. Po izreku \ref{izr:cayleyFreeOrder} je delovanje $F$ na \cay{F}{S} z levo translacijo prosto natanko tedaj ko v $S$ ni elementa reda $2$. Uporabimo univerzalno lastnost prostih grup, da se prepričamo da $S$ res nima elementov reda $2$.
+    
+    Naj bo $\varphi : S \longrightarrow \Z$ poljubna preslikava za katero velja da noben $s \in S$ ne slika v $0$. Po univerzalni lastnosti jo lahko dopolnemo do homomorfizma $\overline{\varphi} : F \longrightarrow \Z$. Če $s \in S$ reda $2$ mora red elementa $\overline{\varphi}(s)$ deliti $2$. Red elementa $\overline{\varphi}(s)$ 	ne more biti $2$, saj $\Z$ ne vsebuje elementov reda 2. Hkrati pa red elementa $\overline\varphi(s)$ ne more biti $1$, ker je v $\Z$ edini element reda $1$ element $0$, ki pa po izbiri $\varphi$ ni slika nobenega $s \in S$. (Spomnimo se, da $\overline\varphi|_{S}$ sovpada s $\varphi$)
+    
+    Torej je delovanje proste grupe $F$ na drevesu \cay{F}{S} z levo translacijo prosto.
 \end{proof}
     
 \section{Nielsen-Schreirerjev izrek}
-
+	
 \end{document}
