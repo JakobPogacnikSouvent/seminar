@@ -1,0 +1,313 @@
+\documentclass{beamer}
+
+\usepackage[slovene]{babel}
+\usepackage{amsfonts,amssymb}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+
+\usetheme{Warsaw}
+
+\def\N{\mathbb{N}} % mnozica naravnih stevil
+\def\Z{\mathbb{Z}} % mnozica celih stevil
+\def\Q{\mathbb{Q}} % mnozica racionalnih stevil
+\def\R{\mathbb{R}} % mnozica realnih stevil
+\def\C{\mathbb{C}} % mnozica kompleksnih stevil
+
+\newcommand{\cay}[2]{$Cay(#1, #2)$}
+\newcommand{\aut}[2]{Aut(#1, #2)}
+\newcommand{\cit}[1]{(Izrek \ref{#1})}
+\newcommand{\St}{\widetilde{S}}
+\newcommand{\As}{A^*}
+\newcommand{\Freds}{F_{red}(S)}
+
+
+\def\qed{$\hfill\Box$}   % konec dokaza
+\newtheorem{izrek}{Izrek}
+\newtheorem{trditev}{Trditev}
+\newtheorem{posledica}{Posledica}
+\newtheorem{lema}{Lema}
+\newtheorem{definicija}{Definicija}
+\newtheorem{opomba}{Opomba}
+\newtheorem{primer}{Primer}
+\newtheorem{zgled}{Zgled}
+\newtheorem{zgledi}{Zgledi uporabe}
+\newtheorem{zglediaf}{Zgledi aritmetičnih funkcij}
+\newtheorem{oznaka}{Oznaka}
+
+\institute{Fakulteta za matematiko in fiziko \\
+Oddelek za matematiko}
+
+\title{Proste grupe in drevesa}
+\author{Jakob Pogačnik Souvent}
+
+\begin{document}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Uvod, definicija prostih grup, motivacija (zakaj so nam všeč), izrek do katerega bomo delali (ukvarjali se bomo s prepoznavanjem pr. gr.)
+
+\begin{frame}
+
+    % Preden začnemo z grupami se najprej ustavimo pri vektorskih prostorih.
+    % Ponavadi imamo radi da imajo vektorji v naših generatorjih eno zelo lepo lastnost.
+    % Kaj bi bila ta lastnost za vektorske prostore? (Če čakajo: razlika med linearno ogrinjačo in bazo, obe generirata, vendar ena ima to lastnost ena pa ne)    
+    % 
+    % Najbolj "prost" generator vektorskih prostorov je torej tak ki ima same linearno neodvisne vektorje
+    % kako pa zdaj naredimo analogijo za grupe?
+    % Uvedimo definicijo.
+
+    \begin{definicija}[Proste grupe]
+    %TODO: Style
+        Naj bo $S$ množica. Za grupo $F$, ki vsebuje $S$ Pravimo, da $S$ \textbf{prosto generira} $F$, če velja:
+
+        Za vsako grupo $G$ in vsako preslikavo $\varphi : S \longrightarrow G$ obstaja enolično določen homomorfizem $\overline{\varphi} : F \longrightarrow G$ ki razširi $\varphi$.
+    \end{definicija}
+    
+    % POVEJ:
+    % Grupi $F$ pravimo \textbf{prosta}, če vsebuje kakšno podmnožico, ki jo prosto generira, zgornji lastnosti pa pravimo \textbf{univerzalna lastnost} prostih grup.
+
+    % NARIŠI:
+    % Comutativni diagram
+\end{frame}
+
+\begin{frame}
+    % Oglejmo si nekaj primerov proste grupe
+
+    % Razloži zakaj.
+    % Preslikave v Z_2
+    \begin{zgled}
+        \begin{enumerate}
+            \item Trivialna grupa je prosto generirana s prazno množico.
+            \item $\Z$ je prosto generirana z $\{1\}$, vendar ne z $\{2, 3\}$ ali z $\{2\}$.
+            \item $\Z_2$ ni prosto generirana.
+        \end{enumerate}
+    \end{zgled}
+
+    % Opazimo, da je težje pokazati da grupa ni prosto generirana.
+\end{frame}
+
+\begin{frame}
+    % Motivacijski slajd
+
+    % Preden bi nadaljevali pa se vprašajmo, zakaj nas sploh zanimajo grupe s tako lastnostjo?
+    % Če naredimo korak nazaj zakaj nas sploh zanimajo algebraične strukture s prostimi generatorji?
+    %
+    % Odgovor:
+    % Ponavadi je v algebri vsaka struktura kvocient t.i. proste strukture.
+    % In za grupe velja naslednji izrek
+
+    \begin{izrek}
+        Vsaka grupa je kvocientna grupa neke proste grupe.
+    \end{izrek}
+    % Če torej razumemo proste grupe nam to pripomore k razumevanju vseh grup
+    \pause
+    % V današnjem predavanju se bomo osredotočili predvsem na razumevanje povezav med grupami in grafi v cilju prepoznavanja prostih grup
+    % in da bomo imeli med predavanjem v mislih nek cilj kar zdaj razkrijemo izrek 
+    \begin{izrek}
+        Grupa je prosta natanko tedaj ko ima neko prosto delovanje na nepraznem drevesu.
+    \end{izrek}
+    
+    % preden se lotimo dokaza te trditve pa vidimo da nas čaka še nekaj definicij izrekov
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Brez dokaza nekaj pomembnih elementarnih lasnosti
+% Pr. gr. enolicnost, eksistenca, generator, konstrukcija freds
+
+\begin{frame}
+    % Začnimo najprej z nekaj elementarnimi lastnostmi prostih grup, ki jih bomo povedali brez dokaza
+    % če koga zanimajo dokazi si jih lahko ogleda v člankih.
+    
+    % Lastnosti omenimo zato ker se bomo nanje nanašali v nekaterih kasnejših dokazih.
+
+    \begin{izrek}[Enoličnost prostih grup]
+        Naj bo $S$ množica. Potem do izomorfizma natančno obstaja največ ena grupa prosto generirana z $S$.
+        % Povej idejo dokaza. Trivialen
+    \end{izrek}
+    \pause
+    \begin{izrek}[Eksistenca prostih grup]
+        Naj bo $S$ množica. Potem obstaja grupa, prosto generirana z $S$.
+        % Povej idejo dokaza. Zahteven s konstrukcijo
+    \end{izrek}
+    \pause
+    % Zakaj se ne ustavljamo dolgo na tej konstrukciji prostih grup je zato ker obstaja lepša konstrukcija
+    % t.j. konstrukcija z okrajšanimi besedami, ki je po enoličnosti ekvivalentna.
+
+    % Tukaj je vredno opomniti da to, da S generira F ni del definicije
+    \begin{izrek}
+        Naj bo $F$ grupa, prosto generirana z $S$. Potem je $S$ generator grupe $F$.
+    \end{izrek}
+
+\end{frame}
+
+\begin{frame}
+
+    \begin{trditev}
+        Naj bo $S$ množica.
+        \begin{enumerate}
+            \item Množica okrajšanih besed $\Freds$ nad $S \cup \widehat{S}$ tvori grupo za operacijo kompozicije
+            \item Grupa $\Freds$ je prosto generirana z $S$.
+        \end{enumerate} 
+    \end{trditev}
+
+    % razloži kaj je abeceda
+    % kaj je beseda
+    % kaj pomeni biti okrajšan
+
+    % no in če tako definiramo operacijo zdaj imamo neko konkretno presentacijo
+    % proste grupe. zakaj nam je to všeč. spomnemo se na prejšnji izrek o enoličnosti
+    % če poznamo eno prosto grupo poznamo vse
+
+    % dejstvo da nam taka konstrukcija da prosto grupo bo pomembno v naslednjih dokazih
+
+    % ZGLED: izmisli si množico, {a, b, c, d, e, f} napiši par besed in naredi operacijo
+
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preidimo na grafe. Ogledli si bomo poseben graf ki je povezan z grupami
+
+% Def cayley
+% Kako je povezan s prostimi grupami
+% cayley is tree
+% tree is free
+
+\begin{frame}
+    \begin{definicija}[Cayleyev graf]
+        Naj bo $S$ podmnožica, ki generira grupo $G$. \textbf{Cayleyjev graf} $G$ glede na generator $S$ je graf \cay{G}{S} katerega množica vozlišč je množica $G$
+        in katerega množica povezav je množica
+        $$
+        \{\{g, g \cdot s\}\;|\;g \in G, s \in (S \cup S^{-1}) \setminus \{e\} \},
+        $$
+        kjer je s $\cdot$ označeno množenje v grupi $G$.
+    \end{definicija}
+
+\end{frame}
+
+\begin{frame}
+
+    \begin{zgled}
+        \begin{enumerate}
+            \item \cay{\Z}{\{1\}}
+            \item \cay{\Z}{\{2,3\}}
+            \item \cay{\Z^2}{\{(1,0), (0,1)\}}
+            \item \cay{\Z_6}{\{1\}}
+        \end{enumerate}
+    \end{zgled}
+
+\end{frame}
+
+\begin{frame}
+    
+    \begin{zgled}
+        \cay{\Freds}{S} kjer $S = \{a, b\}$
+    \end{zgled}
+    \pause
+    \begin{izrek}[Cayleyev graf prostih grup]
+        Naj bo $F$ grupa, prosto generirana z $S \subset F$. Potem je graf \cay{F}{S} drevo (drevo je graf brez ciklov).
+    \end{izrek}
+    \pause
+    \begin{opomba}
+        Inverz v splošnem ne velja. Protiprimer: \cay{\Z_2}{\{1\}}.
+    \end{opomba}
+
+\end{frame}
+
+\begin{frame}
+    \begin{izrek}[Obrat]
+        Naj bo $G$ grupa in naj $S \subset G$ generira $G$. Dodatno naj velja:
+        
+        $$\forall s, t \in S : s \cdot t \neq e \text{.} $$
+
+        Če je Cayleyev graf \cay{G}{S} drevo, potem $S$ prosto generira $G$.    
+    \end{izrek}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Vemo že skoraj vse pojme v izreku, manjka nam še povezava med grupo in drugo strukturo
+% Def delovanje, prosto del
+% leva translacija prosta iff brez reda 2
+
+\begin{frame}
+    \begin{definicija}[Delovanje]
+        Naj bo $G$ grupa, naj bo $C$ kategorija in naj bo $X$ objekt v $C$. \textbf{Delovanje} grupe $G$ na $X$ v kategoriji $C$ je
+        homomorfizem grup $G \longrightarrow Aut_C(X)$.
+    \end{definicija}
+\end{frame}
+
+\begin{frame}
+    \begin{definicija}[Prosto delovanje na množici]
+        Naj grupa $G$ deluje na množici $X$. Pravimo, da je delovanje \textbf{prosto}, če velja:
+        $$
+            g \cdot x \neq x \quad \forall g \in G \setminus \{e\}, \forall x \in X
+        $$
+    \end{definicija}
+    \pause
+    \begin{definicija}[Prosto delovanje na grafu]
+        \pause
+        Naj bo $\rho : G \longrightarrow \aut{V}{E}$ delovanje $G$ na grafu $(V, E)$. Pravimo, da je to delovanje \textbf{prosto}, če velja:
+        \begin{align*}
+            \forall v \in V : (\rho(g))(v) &\neq v \text{, in}\\
+            \forall \{v, v'\} \in E : \{(\rho(g))(v), (\rho(g))(v')\} &\neq \{v, v'\}
+        \end{align*}
+        za vsak $g \in G\setminus\{e\}$.
+    
+    \end{definicija}
+\end{frame}
+
+\begin{frame}
+    \begin{zgled}
+        \begin{enumerate}
+            \item Delovanje $\Z$ na $\{z \in \C\;|\;|z| = 1\}$ kot
+            $$
+            n \cdot z = e^{2 \pi i \alpha n} z
+            $$
+            kjer $\alpha \in \R$.
+            \item Delovanje $\Z$ na \cay{\Z}{\{1\}} z (levim) seštevanjem.
+        \end{enumerate}
+    \end{zgled}
+\end{frame}
+
+\begin{frame}
+    \begin{izrek}
+            Naj bo $G$ grupa in $S$ neka množica ki generira $G$. Potem je delovanje $G$ na \cay{G}{S} z levo translacijo
+            $$
+            g \cdot v = gv
+            $$
+            prosto natanko tedaj, ko $S$ ne vsebuje nobenega elementa reda $2$.
+        \end{izrek}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Preden lahko dokažemo manjka še en manjši pojem in izrek
+% Def vpeto drevo
+% vsako delovanje ima vpeto drevo
+
+\begin{frame}
+    \begin{definicija}[Vpeto drevo delovanja]
+        Naj grupa $G$ deluje na povezan graf $X$. \textbf{Vpeto drevo delovanja} $G$ na $X$ je podgraf $X$ ki je drevo in vsebuje natanko eno vozlišče vsake orbite delovanja $G$ na vozlišča grafa.
+    \end{definicija}
+    
+    \pause
+
+    \begin{izrek}
+        Vsako delovanje grupe na povezanem grafu ima vpeto drevo delovanja.
+    \end{izrek}
+\end{frame}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{frame}
+    \begin{izrek}
+        Grupa je prosta natanko tedaj ko ima neko prosto delovanje na nepraznem drevesu.
+    \end{izrek}
+\end{frame}
+
+\end{document}
