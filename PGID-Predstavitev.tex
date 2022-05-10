@@ -55,6 +55,10 @@ Oddelek za matematiko}
 
 \begin{frame}
 
+    \frametitle{Uvod}
+
+    \pause
+
     % Preden začnemo z grupami se najprej ustavimo pri vektorskih prostorih.
     % Ponavadi imamo radi da imajo vektorji v naših generatorjih eno zelo lepo lastnost.
     % Kaj bi bila ta lastnost za vektorske prostore? (Če čakajo: razlika med linearno ogrinjačo in bazo, obe generirata, vendar ena ima to lastnost ena pa ne)    
@@ -69,15 +73,15 @@ Oddelek za matematiko}
 
         Za vsako grupo $G$ in vsako preslikavo $\varphi : S \longrightarrow G$ obstaja enolično določen homomorfizem $\overline{\varphi} : F \longrightarrow G$ ki razširi $\varphi$.
     \end{definicija}
+
+    \pause
     
     % POVEJ:
     % Grupi $F$ pravimo \textbf{prosta}, če vsebuje kakšno podmnožico, ki jo prosto generira, zgornji lastnosti pa pravimo \textbf{univerzalna lastnost} prostih grup.
 
     % NARIŠI:
     % Comutativni diagram
-\end{frame}
 
-\begin{frame}
     % Oglejmo si nekaj primerov proste grupe
 
     % Razloži zakaj.
@@ -94,6 +98,8 @@ Oddelek za matematiko}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Motivacija}
+    \pause
     % Motivacijski slajd
 
     % Preden bi nadaljevali pa se vprašajmo, zakaj nas sploh zanimajo grupe s tako lastnostjo?
@@ -122,6 +128,10 @@ Oddelek za matematiko}
 % Pr. gr. enolicnost, eksistenca, generator, konstrukcija freds
 
 \begin{frame}
+    \frametitle{Osnovne lastnosti}
+
+    \pause
+
     % Začnimo najprej z nekaj elementarnimi lastnostmi prostih grup, ki jih bomo povedali brez dokaza
     % če koga zanimajo dokazi si jih lahko ogleda v člankih.
     
@@ -148,7 +158,7 @@ Oddelek za matematiko}
 \end{frame}
 
 \begin{frame}
-
+    \frametitle{Konstrukcija}
     \begin{trditev}
         Naj bo $S$ množica.
         \begin{enumerate}
@@ -180,6 +190,8 @@ Oddelek za matematiko}
 % tree is free
 
 \begin{frame}
+    \frametitle{Grafi}
+    \pause
     \begin{definicija}[Cayleyev graf]
         Naj bo $S$ podmnožica, ki generira grupo $G$. \textbf{Cayleyjev graf} $G$ glede na generator $S$ je graf \cay{G}{S} katerega množica vozlišč je množica $G$
         in katerega množica povezav je množica
@@ -188,11 +200,7 @@ Oddelek za matematiko}
         $$
         kjer je s $\cdot$ označeno množenje v grupi $G$.
     \end{definicija}
-
-\end{frame}
-
-\begin{frame}
-
+    \pause
     \begin{zgled}
         \begin{enumerate}
             \item \cay{\Z}{\{1\}}
@@ -201,11 +209,10 @@ Oddelek za matematiko}
             \item \cay{\Z_6}{\{1\}}
         \end{enumerate}
     \end{zgled}
-
 \end{frame}
 
 \begin{frame}
-    
+    \frametitle{Cayleyev graf prostih grup}
     \begin{zgled}
         \cay{\Freds}{S} kjer $S = \{a, b\}$
     \end{zgled}
@@ -221,6 +228,7 @@ Oddelek za matematiko}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Cayleyev graf prostih grup}
     \begin{izrek}[Obrat]
         Naj bo $G$ grupa in naj $S \subset G$ generira $G$. Dodatno naj velja:
         
@@ -236,6 +244,7 @@ Oddelek za matematiko}
 % leva translacija prosta iff brez reda 2
 
 \begin{frame}
+    \frametitle{Delovanje}
     \begin{definicija}[Delovanje]
         Naj bo $G$ grupa, naj bo $C$ kategorija in naj bo $X$ objekt v $C$. \textbf{Delovanje} grupe $G$ na $X$ v kategoriji $C$ je
         homomorfizem grup $G \longrightarrow Aut_C(X)$.
@@ -243,6 +252,8 @@ Oddelek za matematiko}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Prosto delovanje}
+    \pause
     \begin{definicija}[Prosto delovanje na množici]
         Naj grupa $G$ deluje na množici $X$. Pravimo, da je delovanje \textbf{prosto}, če velja:
         $$
@@ -251,7 +262,6 @@ Oddelek za matematiko}
     \end{definicija}
     \pause
     \begin{definicija}[Prosto delovanje na grafu]
-        \pause
         Naj bo $\rho : G \longrightarrow \aut{V}{E}$ delovanje $G$ na grafu $(V, E)$. Pravimo, da je to delovanje \textbf{prosto}, če velja:
         \begin{align*}
             \forall v \in V : (\rho(g))(v) &\neq v \text{, in}\\
@@ -263,6 +273,8 @@ Oddelek za matematiko}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Prosto delovanje}
+
     \begin{zgled}
         \begin{enumerate}
             \item Delovanje $\Z$ na $\{z \in \C\;|\;|z| = 1\}$ kot
@@ -276,6 +288,8 @@ Oddelek za matematiko}
 \end{frame}
 
 \begin{frame}
+    \frametitle{Prosto delovanje}
+
     \begin{izrek}
             Naj bo $G$ grupa in $S$ neka množica ki generira $G$. Potem je delovanje $G$ na \cay{G}{S} z levo translacijo
             $$
@@ -291,11 +305,11 @@ Oddelek za matematiko}
 % vsako delovanje ima vpeto drevo
 
 \begin{frame}
+    \frametitle{Vpeto drevo}
+
     \begin{definicija}[Vpeto drevo delovanja]
         Naj grupa $G$ deluje na povezan graf $X$. \textbf{Vpeto drevo delovanja} $G$ na $X$ je podgraf $X$ ki je drevo in vsebuje natanko eno vozlišče vsake orbite delovanja $G$ na vozlišča grafa.
     \end{definicija}
-    
-    \pause
 
     \begin{izrek}
         Vsako delovanje grupe na povezanem grafu ima vpeto drevo delovanja.
@@ -305,6 +319,8 @@ Oddelek za matematiko}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \begin{frame}
+    \frametitle{Prosto delovanje na drevesu}
+
     \begin{izrek}
         Grupa je prosta natanko tedaj ko ima neko prosto delovanje na nepraznem drevesu.
     \end{izrek}
