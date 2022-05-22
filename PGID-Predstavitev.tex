@@ -71,7 +71,7 @@ Oddelek za matematiko}
     %TODO: Style
         Naj bo $S$ množica. Za grupo $F$, ki vsebuje $S$ Pravimo, da $S$ \textbf{prosto generira} $F$, če velja:
 
-        Za vsako grupo $G$ in vsako preslikavo $\varphi : S \longrightarrow G$ obstaja enolično določen homomorfizem $\overline{\varphi} : F \longrightarrow G$ ki razširi $\varphi$.
+        Za vsako grupo $G$ in vsako preslikavo $\varphi : S \longrightarrow G$ obstaja enolično določen homomorfizem $\overline{\varphi} : F \longrightarrow G$, ki razširi $\varphi$.
     \end{definicija}
 
     \pause
@@ -117,7 +117,7 @@ Oddelek za matematiko}
     % V današnjem predavanju se bomo osredotočili predvsem na razumevanje povezav med grupami in grafi v cilju prepoznavanja prostih grup
     % in da bomo imeli med predavanjem v mislih nek cilj kar zdaj razkrijemo izrek 
     \begin{izrek}
-        Grupa je prosta natanko tedaj ko ima neko prosto delovanje na nepraznem drevesu.
+        Grupa je prosta natanko tedaj, ko ima neko prosto delovanje na nepraznem drevesu.
     \end{izrek}
     
     % preden se lotimo dokaza te trditve pa vidimo da nas čaka še nekaj definicij izrekov
@@ -193,7 +193,7 @@ Oddelek za matematiko}
     \frametitle{Grafi}
     \pause
     \begin{definicija}[Cayleyev graf]
-        Naj bo $S$ podmnožica, ki generira grupo $G$. \textbf{Cayleyjev graf} $G$ glede na generator $S$ je graf \cay{G}{S} katerega množica vozlišč je množica $G$
+        Naj bo $S$ podmnožica, ki generira grupo $G$. \textbf{Cayleyjev graf} $G$ glede na množico generatorjev $S$ je graf \cay{G}{S}, katerega množica vozlišč je množica $G$
         in katerega množica povezav je množica
         $$
         \{\{g, g \cdot s\}\;|\;g \in G, s \in (S \cup S^{-1}) \setminus \{e\} \},
@@ -218,11 +218,11 @@ Oddelek za matematiko}
     \end{zgled}
     \pause
     \begin{izrek}[Cayleyev graf prostih grup]
-        Naj bo $F$ grupa, prosto generirana z $S \subset F$. Potem je graf \cay{F}{S} drevo (drevo je graf brez ciklov).
+        Naj bo $F$ grupa, prosto generirana z množico $S \subset F$. Potem je graf \cay{F}{S} drevo (drevo je graf brez ciklov).
     \end{izrek}
     \pause
     \begin{opomba}
-        Inverz v splošnem ne velja. Protiprimer: \cay{\Z_2}{\{1\}}.
+        Obrat v splošnem ne velja. Protiprimer: \cay{\Z_2}{\{1\}}.
     \end{opomba}
 
 \end{frame}
@@ -244,25 +244,14 @@ Oddelek za matematiko}
 % leva translacija prosta iff brez reda 2
 
 \begin{frame}
-    \frametitle{Delovanje}
-    \begin{definicija}[Delovanje]
-        Naj bo $G$ grupa, naj bo $C$ kategorija in naj bo $X$ objekt v $C$. \textbf{Delovanje} grupe $G$ na $X$ v kategoriji $C$ je
-        homomorfizem grup $G \longrightarrow Aut_C(X)$.
-    \end{definicija}
-\end{frame}
-
-\begin{frame}
-    \frametitle{Prosto delovanje}
-    \pause
-    \begin{definicija}[Prosto delovanje na množici]
-        Naj grupa $G$ deluje na množici $X$. Pravimo, da je delovanje \textbf{prosto}, če velja:
-        $$
-            g \cdot x \neq x \quad \forall g \in G \setminus \{e\}, \forall x \in X
-        $$
+    \frametitle{(Prosto) delovanje}
+    \begin{definicija}[Delovanje na grafu]
+        Naj bo $G$ grupa. Naj bo $X$ graf. \textbf{Delovanje} grupe $G$ na grafu $X$ je
+        homomorfizem grup $G \longrightarrow Aut(X)$.
     \end{definicija}
     \pause
     \begin{definicija}[Prosto delovanje na grafu]
-        Naj bo $\rho : G \longrightarrow \aut{V}{E}$ delovanje $G$ na grafu $(V, E)$. Pravimo, da je to delovanje \textbf{prosto}, če velja:
+        Naj bo $\rho : G \longrightarrow Aut(X)$ delovanje grupe $G$ na grafu $X = (V, E)$. Pravimo, da je to delovanje \textbf{prosto}, če velja:
         \begin{align*}
             \forall v \in V : (\rho(g))(v) &\neq v \text{, in}\\
             \forall \{v, v'\} \in E : \{(\rho(g))(v), (\rho(g))(v')\} &\neq \{v, v'\}
@@ -291,7 +280,7 @@ Oddelek za matematiko}
     \frametitle{Prosto delovanje}
 
     \begin{izrek}
-            Naj bo $G$ grupa in $S$ neka množica ki generira $G$. Potem je delovanje $G$ na \cay{G}{S} z levo translacijo
+            Naj bo $G$ grupa in $S$ neka množica, ki generira $G$. Potem je delovanje $G$ na \cay{G}{S} z levo translacijo
             $$
             g \cdot v = gv
             $$
@@ -308,7 +297,7 @@ Oddelek za matematiko}
     \frametitle{Vpeto drevo}
 
     \begin{definicija}[Vpeto drevo delovanja]
-        Naj grupa $G$ deluje na povezan graf $X$. \textbf{Vpeto drevo delovanja} $G$ na $X$ je podgraf $X$ ki je drevo in vsebuje natanko eno vozlišče vsake orbite delovanja $G$ na vozlišča grafa.
+        Naj grupa $G$ deluje na povezanem graf $X$. \textbf{Vpeto drevo delovanja} $G$ na $X$ je podgraf grafa $X$, ki je drevo in vsebuje natanko eno vozlišče vsake orbite delovanja $G$ na vozlišča grafa.
     \end{definicija}
 
     \begin{izrek}
@@ -322,7 +311,7 @@ Oddelek za matematiko}
     \frametitle{Prosto delovanje na drevesu}
 
     \begin{izrek}
-        Grupa je prosta natanko tedaj ko ima neko prosto delovanje na nepraznem drevesu.
+        Grupa je prosta natanko tedaj, ko ima neko prosto delovanje na nepraznem drevesu.
     \end{izrek}
 \end{frame}
 
